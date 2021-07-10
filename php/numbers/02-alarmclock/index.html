@@ -1,0 +1,75 @@
+<html xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <title>Add Subtract Multiple Divide</title>
+    <script type="application/javascript" src="jquery-3.4.1.min.js"></script>
+</head>
+
+<script type="application/javascript">
+
+    function setDateTime() {
+        let today = new Date();
+        let date = (today.getMonth()+1) + '/' + today.getDate() + '/' + today.getFullYear();
+        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+        $('#current_date').text(date);
+        $('#current_time').text(time);
+        let t = setTimeout(setDateTime, 500);
+    }
+
+    function validate() {
+        return validateHour() && validateMinute();
+    }
+
+    function validateHour() {
+        let val = $('#alarm_hour').val();
+        val = (val === '') ? false : +val;
+        return Number.isInteger(val) && val >= 0 && val <= 23;
+    }
+
+    function validateMinute() {
+        let val = $('#alarm_minute').val();
+        val = (val === '') ? false : +val;
+        return Number.isInteger(val) && val >= 0 && val <= 59;
+    }
+
+    function submitAlarm() {
+        if(validate()) {
+            console.log('we can submit the alarm somewhere now');
+        } else {
+            displayError();
+        }
+    }
+
+    function displayError() {
+        $('#alert').show();
+    }
+</script>
+
+<body onload="setDateTime()">
+    <p>Date: <span id="current_date"></span></p>
+    <p>Time: <span id="current_time"></span></p>
+
+    <form id="alarm">
+
+        <label>Create Alarm: </label>
+        <br />
+        <br />
+
+        <label>
+            <input id="alarm_hour" name="hour" type="text" placeholder="Enter the hour" />
+        </label>:
+
+        <label>
+            <input id="alarm_minute" name="minute" type="text" placeholder="Enter the minute" />
+        </label>
+        <br />
+        <br />
+
+        <p id="alert" hidden>boo</p>
+
+        <button type="button" id="make_alarm" onclick="submitAlarm()">Make Alarm</button>
+
+    </form>
+</body>
+
+</html>

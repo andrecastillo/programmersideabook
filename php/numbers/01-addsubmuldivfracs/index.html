@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <title>Add Subtract Multiple Divide</title>
+</head>
+
+<body>
+<form action="calculate.php" method="post">
+
+    <label>Which do you want to do:
+        <select name="operation">
+            <option value="add">Add</option>
+            <option value="subtract">Subtract</option>
+            <option value="multiply">Multiply</option>
+            <option value="divide">Divide</option>
+        </select>
+    </label>
+
+    <br />
+    <br />
+    <fieldset>
+        <label>Fraction 1
+            <br />
+            <input type="text" name="frac[1][numerator]" /> <br/>
+            <input type="text" name="frac[1][denominator]" />
+        </label>
+    </fieldset>
+
+    <br />
+    <fieldset>
+        <label>Fraction 2
+            <br />
+            <input type="text" name="frac[2][numerator]" /> <br/>
+            <input type="text" name="frac[2][denominator]" />
+        </label>
+    </fieldset>
+
+    <br />
+    <br />
+
+    <input type="submit" />
+</form>
+</body>
+
+</html>
